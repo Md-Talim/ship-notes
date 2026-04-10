@@ -25,13 +25,17 @@ export default function Home() {
             placeholder="https://github.com/owner/repo/pull/123"
             className="h-10 flex-1"
           />
-          <Button size="lg" variant="default" className="bg-[#ffffff] h-10 gap-1.5 px-4">
+          <Button
+            size="lg"
+            variant="default"
+            className="h-10 gap-1.5 bg-[#ffffff] px-4"
+          >
             Generate
             <ArrowRight className="size-4" />
           </Button>
         </div>
 
-        <ul className="text-muted-foreground flex flex-col gap-3 text-sm list-disc">
+        <ul className="text-muted-foreground flex list-disc flex-col gap-3 text-sm">
           <li>Reads the diff and PR description automatically.</li>
           <li>Writes a concise, audience-ready changelog entry.</li>
           <li>No config, no YAML, no templates.</li>
@@ -55,7 +59,6 @@ function Navbar() {
             </span>
           </Button>
         </SignInButton>
-
       </Show>
 
       <Show when="signed-in">
