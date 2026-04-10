@@ -1,4 +1,5 @@
 import { CalSansUI } from "@calcom/cal-sans-ui/ui";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -20,8 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${CalSansUI.variable} ${jetBrainsMono.variable} dark h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+    <html
+      lang="en"
+      className={`${CalSansUI.variable} ${jetBrainsMono.variable} dark h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col">
+        <ClerkProvider>{children}</ClerkProvider>
+      </body>
     </html>
   );
 }
