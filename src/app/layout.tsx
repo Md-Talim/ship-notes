@@ -2,6 +2,7 @@ import { CalSansUI } from "@calcom/cal-sans-ui/ui";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
 const jetBrainsMono = JetBrains_Mono({
@@ -26,7 +27,9 @@ export default function RootLayout({
       className={`${CalSansUI.variable} ${jetBrainsMono.variable} dark h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </ClerkProvider>
       </body>
     </html>
   );
