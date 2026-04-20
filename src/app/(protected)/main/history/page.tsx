@@ -150,7 +150,8 @@ function HistoryRow({
   };
 
   return (
-    <div className="group flex items-start gap-4 px-4 py-3">
+    <div className="group flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-start sm:gap-4">
+      {/* Left content */}
       <div className="flex min-w-0 flex-1 flex-col gap-0.5">
         <span className="text-muted-foreground font-mono text-xs">{repo}</span>
 
@@ -164,8 +165,8 @@ function HistoryRow({
         )}
       </div>
 
-      {/* Right side: badge + date + actions */}
-      <div className="flex shrink-0 items-center gap-3">
+      {/* Bottom row on mobile, right side on desktop */}
+      <div className="flex items-center gap-3">
         {/* Style badge */}
         <span className="bg-muted text-muted-foreground rounded-full px-2 py-0.5 text-[10px] font-medium">
           {entry.style}
@@ -173,14 +174,17 @@ function HistoryRow({
 
         {/* Date with tooltip */}
         <Tooltip>
-          <TooltipTrigger className="text-muted-foreground w-16 cursor-default text-right text-xs tabular-nums">
+          <TooltipTrigger className="text-muted-foreground cursor-default text-xs tabular-nums sm:w-16 sm:text-right">
             {relativeTime(createdAt)}
           </TooltipTrigger>
           <TooltipContent>{absoluteDate(createdAt)}</TooltipContent>
         </Tooltip>
 
-        {/* Actions — visible on hover (desktop), always visible (mobile) */}
-        <div className="flex items-center gap-0.5 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
+        {/* Spacer pushes actions to the right on mobile */}
+        <div className="flex-1 sm:hidden" />
+
+        {/* Actions — always visible on mobile, hover-reveal on desktop */}
+        <div className="flex items-center gap-0.5 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
           <Button
             variant="ghost"
             size="icon-xs"
